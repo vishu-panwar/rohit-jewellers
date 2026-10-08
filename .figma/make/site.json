@@ -1,0 +1,10 @@
+{
+  "description": "Showcases a premium jewelry brand with an elegant multi-page design that enhances user experience and highlights exquisite collections.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
