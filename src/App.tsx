@@ -79,8 +79,8 @@ function Header({ page, navigate }: { page: Page; navigate: (page: Page) => void
       </div>
     </header>
     {open && <div className="fixed inset-0 z-50 overflow-y-auto bg-wine px-7 py-7 text-cream lg:hidden">
-      <div className="flex items-center justify-between border-b border-cream/20 pb-6"><span className="font-display text-2xl">Rohit Jewellers</span><button onClick={() => setOpen(false)} aria-label="Close menu"><Icon name="close" /></button></div>
-      <nav className="mt-10 flex flex-col items-start gap-7">{navItems.map((item, i) => <button key={item.page} onClick={() => go(item.page)} className="font-display text-4xl"><span className="mr-4 font-sans text-[10px] text-gold">0{i + 1}</span>{item.label}</button>)}</nav>
+      <div className="flex items-center justify-between border-b border-cream/20 pb-6"><span className="font-display text-3xl">Rohit Jewellers</span><button onClick={() => setOpen(false)} aria-label="Close menu"><Icon name="close" size={30} /></button></div>
+      <nav className="mt-12 flex flex-col items-start gap-9">{navItems.map((item, i) => <button key={item.page} onClick={() => go(item.page)} className="font-display text-5xl leading-tight"><span className="mr-5 font-sans text-base font-medium text-gold">0{i + 1}</span>{item.label}</button>)}</nav>
     </div>}
   </>;
 }
