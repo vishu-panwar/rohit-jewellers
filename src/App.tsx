@@ -59,7 +59,6 @@ function Button({ children, onClick, light = false, type = "button" }: { childre
 
 function Header({ page, navigate }: { page: Page; navigate: (page: Page) => void }) {
   const [open, setOpen] = useState(false);
-  const [search, setSearch] = useState(false);
   const navItems: { label: string; page: Page }[] = [
     { label: "Home", page: "home" }, { label: "Collections", page: "collections" },
     { label: "Bridal", page: "bridal" }, { label: "Services", page: "services" }, { label: "Our Story", page: "about" }, { label: "Visit Us", page: "contact" },
@@ -69,7 +68,6 @@ function Header({ page, navigate }: { page: Page; navigate: (page: Page) => void
     <div className="bg-wine py-2.5 text-center text-[9px] font-semibold uppercase tracking-[0.17em] text-cream sm:text-[10px]">Nakur’s trusted family jeweller · BIS hallmarked gold · Transparent pricing</div>
     <header className="sticky top-0 z-40 border-b border-wine/10 bg-ivory/95 backdrop-blur-xl">
       <div className="mx-auto flex h-20 max-w-[1440px] items-center justify-between px-5 md:px-10">
-        <button className="lg:hidden" onClick={() => setOpen(true)} aria-label="Open menu"><Icon name="menu" /></button>
         <button onClick={() => go("home")} className="min-w-fit text-center leading-none">
           <span className="block font-display text-[26px] font-semibold tracking-[0.03em] text-wine">ROHIT</span>
           <span className="mt-1 block text-[8px] font-semibold tracking-[0.42em] text-gold-dark">JEWELLERS</span>
@@ -77,19 +75,12 @@ function Header({ page, navigate }: { page: Page; navigate: (page: Page) => void
         <nav className="hidden items-center gap-7 lg:flex xl:gap-10">
           {navItems.map((item) => <button key={item.page} onClick={() => go(item.page)} className={`nav-link ${page === item.page ? "active" : ""}`}>{item.label}</button>)}
         </nav>
-        <div className="flex items-center gap-5">
-          <button aria-label="Search" onClick={() => setSearch(true)}><Icon name="search" /></button>
-          <button aria-label="Shopping bag" className="hidden sm:block"><Icon name="bag" /></button>
-        </div>
+        <button className="lg:hidden" onClick={() => setOpen(true)} aria-label="Open menu"><Icon name="menu" size={28} /></button>
       </div>
     </header>
     {open && <div className="fixed inset-0 z-50 overflow-y-auto bg-wine px-7 py-7 text-cream lg:hidden">
       <div className="flex items-center justify-between border-b border-cream/20 pb-6"><span className="font-display text-2xl">Rohit Jewellers</span><button onClick={() => setOpen(false)} aria-label="Close menu"><Icon name="close" /></button></div>
       <nav className="mt-10 flex flex-col items-start gap-7">{navItems.map((item, i) => <button key={item.page} onClick={() => go(item.page)} className="font-display text-4xl"><span className="mr-4 font-sans text-[10px] text-gold">0{i + 1}</span>{item.label}</button>)}</nav>
-    </div>}
-    {search && <div className="fixed inset-0 z-50 flex items-start justify-center bg-wine/95 px-5 pt-[18vh] text-cream">
-      <button onClick={() => setSearch(false)} className="absolute right-7 top-7" aria-label="Close search"><Icon name="close" size={28} /></button>
-      <div className="w-full max-w-3xl"><p className="mb-6 text-center text-[10px] uppercase tracking-[0.28em] text-gold">Find your forever piece</p><div className="flex border-b border-cream/50"><input autoFocus className="w-full bg-transparent py-5 font-display text-3xl outline-none placeholder:text-cream/40 md:text-5xl" placeholder="Search collections..." /><Icon name="search" size={28} /></div></div>
     </div>}
   </>;
 }
